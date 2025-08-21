@@ -1,4 +1,4 @@
-// App.jsx
+// Importing react components, libraries, and CSS
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import ChannelInput from "./components/ChannelInput";
