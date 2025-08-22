@@ -4,51 +4,95 @@ import axios from "axios";
 import VideoCard from "./VideoCard";
 import "../styles/VideoList.css";
 
-const VideoList = () => {
+const VideoList = ({ searchQuery }) => {
   const { id } = useParams(); // channelId from URL
   const [videos, setVideos] = useState([]);
   const [nextPageToken, setNextPageToken] = useState("");
   const [prevPageToken, setPrevPageToken] = useState("");
   const [currentPageNumber, setCurrentPageNumber] = useState(1);
+  const [totalResults, setTotalResults] = useState(0);
+  const [resultsPerPage, setResultsPerPage] = useState(12);
+  const [loading, setLoading] = useState(false);
+  const [currentSearch, setCurrentSearch] = useState("");
 
-  const fetchVideos = async (pageToken = "") => {
+  const fetchVideos = async (pageToken = "", query = "") => {
+    setLoading(true);
     try {
-      const res = await axios.get(
-        `http://localhost:5000/api/videos?id=${id}&pageToken=${pageToken}`
-      );
+      let url = `http://localhost:5000/api/videos?id=${id}&pageToken=${pageToken}&maxResults=12`;
+      if (query) {
+        url += `&q=${encodeURIComponent(query)}`;
+      }
+
+      const res = await axios.get(url);
 
       setVideos(res.data.items || []);
       setNextPageToken(res.data.nextPageToken || "");
       setPrevPageToken(res.data.prevPageToken || "");
+      setTotalResults(res.data.totalResults || 0);
+      setResultsPerPage(res.data.resultsPerPage || 12);
+      setCurrentSearch(query);
     } catch (err) {
       console.error("Error fetching videos:", err);
+      setVideos([]);
+    } finally {
+      setLoading(false);
     }
   };
 
   useEffect(() => {
     if (!id) return;
     setCurrentPageNumber(1);
-    fetchVideos();
-  }, [id]);
+    setNextPageToken("");
+    setPrevPageToken("");
+    fetchVideos("", searchQuery);
+  }, [id, searchQuery]);
 
   const handleNext = () => {
     if (nextPageToken) {
-      fetchVideos(nextPageToken);
+      fetchVideos(nextPageToken, currentSearch);
       setCurrentPageNumber((prev) => prev + 1);
     }
   };
 
   const handlePrev = () => {
     if (prevPageToken) {
-      fetchVideos(prevPageToken);
+      fetchVideos(prevPageToken, currentSearch);
       setCurrentPageNumber((prev) => Math.max(prev - 1, 1));
     }
   };
 
+  const getTotalPages = () => {
+    return Math.ceil(totalResults / resultsPerPage);
+  };
+
   return (
     <div className="video-list-container">
-      {videos.length === 0 ? (
-        <p>No videos found for this channel.</p>
+      {currentSearch && (
+        <div className="search-info">
+          <h3>Search Results for: "{currentSearch}"</h3>
+          <p>{totalResults} videos found</p>
+        </div>
+      )}
+
+      {loading ? (
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+          <p>Loading videos...</p>
+        </div>
+      ) : videos.length === 0 ? (
+        <div className="no-results">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="64"
+            height="64"
+            fill="currentColor"
+            viewBox="0 0 16 16"
+          >
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+          </svg>
+          <h3>No videos found</h3>
+          <p>{currentSearch ? `No videos match "${currentSearch}"` : "This channel has no videos yet."}</p>
+        </div>
       ) : (
         <>
           <div className="video-list">
@@ -57,14 +101,55 @@ const VideoList = () => {
             ))}
           </div>
 
-          <div className="pagination">
-            <button onClick={handlePrev} disabled={!prevPageToken}>
-              Previous
-            </button>
-            <span>Page {currentPageNumber}</span>
-            <button onClick={handleNext} disabled={!nextPageToken}>
-              Next
-            </button>
+          <div className="pagination-container">
+            <div className="pagination-info">
+              <span>
+                Showing {((currentPageNumber - 1) * resultsPerPage) + 1} - {Math.min(currentPageNumber * resultsPerPage, totalResults)} of {totalResults} videos
+              </span>
+            </div>
+
+            <div className="pagination">
+              <button
+                onClick={handlePrev}
+                disabled={!prevPageToken}
+                className="pagination-btn prev-btn"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  viewBox="0 0 16 16"
+                >
+                  <path fillRule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                </svg>
+                Previous
+              </button>
+
+              <div className="page-info">
+                <span className="page-number">Page {currentPageNumber}</span>
+                {getTotalPages() > 0 && (
+                  <span className="total-pages">of {getTotalPages()}</span>
+                )}
+              </div>
+
+              <button
+                onClick={handleNext}
+                disabled={!nextPageToken}
+                className="pagination-btn next-btn"
+              >
+                Next
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  viewBox="0 0 16 16"
+                >
+                  <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
+              </button>
+            </div>
           </div>
         </>
       )}
