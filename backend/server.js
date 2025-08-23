@@ -21,7 +21,7 @@ app.get("/api/videos", async (req, res) => {
     }
 
     const response = await fetch(
-      `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${channelId}&part=snippet,id&order=date&maxResults=20&pageToken=${pageToken}`
+      `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${channelId}&part=snippet,id&order=date&maxResults=21&pageToken=${pageToken}`
     );
 
     if (!response.ok) {
