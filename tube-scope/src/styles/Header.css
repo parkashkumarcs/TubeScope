@@ -1,16 +1,16 @@
 .header-banner {
   position: relative;
   color: white;
-  padding: 40px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  padding: 0;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   transition: background 0.5s ease-in-out;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  height: 250px;
+  width: 100%;
+  display: block;
 }
 
 .header-banner.loading {
@@ -26,8 +26,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.45); /* Dark overlay for readability */
-  backdrop-filter: blur(3px); /* Optional blur effect */
+  background: rgba(0, 0, 0, 0.3); /* Lighter overlay for better image visibility */
+  backdrop-filter: blur(1px); /* Reduced blur effect */
   z-index: 1;
 }
 
@@ -35,50 +35,220 @@
   position: relative;
   z-index: 2;
   display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 400px;
+  justify-content: flex-end;
+}
+
+
+
+/* Channel Profile Section */
+.channel-profile-section {
+  display: flex;
   align-items: center;
-  gap: 20px;
-  max-width: 900px;
-  margin: 0 auto;
-  flex-wrap: wrap;
+  gap: 32px;
+  padding: 40px 50px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  border-bottom: none;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Search and Navigation Section */
+.search-navigation-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 25px 40px;
+  border-bottom: none;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
 }
 
 .channel-logo {
-  width: 100px;
-  height: 100px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
-  transition: transform 0.3s ease;
+  box-shadow: 0 12px 40px rgba(102, 126, 234, 0.3);
+  transition: all 0.4s ease;
+  border: 5px solid #ffffff;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.channel-logo::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
 .channel-logo:hover {
-  transform: scale(1.1);
+  transform: scale(1.08);
+  box-shadow: 0 16px 50px rgba(102, 126, 234, 0.4);
+}
+
+.channel-logo:hover::before {
+  opacity: 1;
+}
+
+.channel-info {
+  flex: 1;
+  text-align: left;
 }
 
 .channel-info h1 {
-  font-size: 2.4rem;
-  margin-bottom: 10px;
-  font-weight: bold;
-  transition: color 0.3s ease;
+  font-size: 3.2rem;
+  margin: 0 0 12px 0;
+  font-weight: 800;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
 }
 
-.channel-info h1:hover {
-  color: #ffdd00;
+.channel-handle {
+  font-size: 1.1rem;
+  color: #7c7c7c;
+  margin: 0 0 20px 0;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.channel-desc {
-  font-size: 1rem;
-  margin-bottom: 20px;
-  opacity: 0.9;
-  line-height: 1.5;
+.channel-handle::before {
+  content: '@';
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 .stats {
   display: flex;
-  gap: 20px;
-  justify-content: center;
+  align-items: center;
+  gap: 24px;
   font-size: 1rem;
+  margin: 0 0 24px 0;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 16px 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+  transition: all 0.3s ease;
+  min-width: 120px;
+}
+
+.stat-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4);
+}
+
+.stat-number {
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: white;
+  line-height: 1;
+}
+
+.stat-label {
   font-weight: 500;
-  margin-bottom: 25px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-separator {
+  display: none;
+}
+
+.channel-desc {
+  font-size: 1.05rem;
+  color: #555;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0;
+  background: rgba(102, 126, 234, 0.05);
+  padding: 20px 24px;
+  border-radius: 12px;
+  border-left: 4px solid #667eea;
+  position: relative;
+  font-weight: 400;
+}
+
+.channel-desc::before {
+  content: '"';
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-size: 2rem;
+  color: #667eea;
+  opacity: 0.3;
+  font-family: serif;
+}
+
+/* Content Navigation Buttons */
+.content-navigation {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  justify-content: center;
+}
+
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: #ffffff;
+  border: 2px solid #e0e0e0;
+  border-radius: 25px;
+  color: #333;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav-btn:hover {
+  background: #f8f9fa;
+  border-color: #667eea;
+  color: #667eea;
+  transform: translateY(-2px);
+}
+
+.nav-btn.active {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+  border-color: #ee5a24;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(238, 90, 36, 0.3);
+}
+
+.nav-btn.active:hover {
+  background: linear-gradient(135deg, #ee5a24, #ff6b6b);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(238, 90, 36, 0.4);
 }
 
 /* Search Container Styles */
@@ -106,24 +276,24 @@
 .search-input {
   width: 100%;
   padding: 14px 50px 14px 45px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid #ffffff;
   border-radius: 25px;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  color: white;
+  background: #ffffff;
+  color: #333;
   font-size: 1rem;
   outline: none;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .search-input::placeholder {
-  color: rgba(255, 255, 255, 0.7);
+  color: #888;
 }
 
 .search-input:focus {
-  border-color: rgba(255, 255, 255, 0.6);
-  background: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  border-color: #667eea;
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
 }
 
 .search-icon {
@@ -159,7 +329,7 @@
 
 .search-btn {
   padding: 14px 28px;
-  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+  background: linear-gradient(135deg, #667eea, #764ba2);
   color: white;
   border: none;
   border-radius: 25px;
@@ -167,22 +337,68 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(238, 90, 36, 0.3);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
   min-width: 100px;
 }
 
 .search-btn:hover {
-  background: linear-gradient(135deg, #ee5a24, #ff6b6b);
+  background: linear-gradient(135deg, #764ba2, #667eea);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(238, 90, 36, 0.4);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
 }
 
 .search-btn:active {
   transform: translateY(0);
 }
 
-/* Responsive Design for Search */
+/* Responsive Design */
 @media (max-width: 768px) {
+  .header-banner {
+    min-height: 350px;
+  }
+
+  .channel-profile-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px 30px;
+    gap: 24px;
+  }
+
+  .channel-logo {
+    width: 120px;
+    height: 120px;
+  }
+
+  .channel-info h1 {
+    font-size: 2.4rem;
+  }
+
+  .stats {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .stat-item {
+    min-width: 100px;
+    padding: 12px 16px;
+  }
+
+  .stat-number {
+    font-size: 1.2rem;
+  }
+
+  .channel-desc {
+    max-width: 100%;
+    font-size: 1rem;
+    padding: 16px 20px;
+  }
+
+  .search-navigation-section {
+    padding: 20px;
+  }
+
   .search-form {
     flex-direction: column;
     gap: 15px;
@@ -197,22 +413,17 @@
     max-width: 200px;
   }
 
-  .header-content {
-    text-align: center;
+  .content-navigation {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
   }
 
-  .channel-info {
+  .nav-btn {
     width: 100%;
+    max-width: 200px;
+    justify-content: center;
   }
 }
 
-.stats span {
-  background: rgba(255, 255, 255, 0.15);
-  padding: 8px 16px;
-  border-radius: 20px;
-  transition: background 0.3s ease;
-}
 
-.stats span:hover {
-  background: rgba(255, 255, 255, 0.25);
-}
