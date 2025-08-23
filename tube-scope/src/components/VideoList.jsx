@@ -11,14 +11,14 @@ const VideoList = ({ searchQuery }) => {
   const [prevPageToken, setPrevPageToken] = useState("");
   const [currentPageNumber, setCurrentPageNumber] = useState(1);
   const [totalResults, setTotalResults] = useState(0);
-  const [resultsPerPage, setResultsPerPage] = useState(12);
+  const [resultsPerPage, setResultsPerPage] = useState(50);
   const [loading, setLoading] = useState(false);
   const [currentSearch, setCurrentSearch] = useState("");
 
   const fetchVideos = async (pageToken = "", query = "") => {
     setLoading(true);
     try {
-      let url = `http://localhost:5000/api/videos?id=${id}&pageToken=${pageToken}&maxResults=12`;
+      let url = `http://localhost:5000/api/videos?id=${id}&pageToken=${pageToken}`;
       if (query) {
         url += `&q=${encodeURIComponent(query)}`;
       }
@@ -29,7 +29,7 @@ const VideoList = ({ searchQuery }) => {
       setNextPageToken(res.data.nextPageToken || "");
       setPrevPageToken(res.data.prevPageToken || "");
       setTotalResults(res.data.totalResults || 0);
-      setResultsPerPage(res.data.resultsPerPage || 12);
+      setResultsPerPage(res.data.resultsPerPage || 50);
       setCurrentSearch(query);
     } catch (err) {
       console.error("Error fetching videos:", err);
