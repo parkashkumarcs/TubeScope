@@ -13,10 +13,20 @@ const VideoList = ({ searchQuery }) => {
   const [totalResults, setTotalResults] = useState(0);
   const [resultsPerPage, setResultsPerPage] = useState(50);
   const [loading, setLoading] = useState(false);
+  const [paginationLoading, setPaginationLoading] = useState(false);
   const [currentSearch, setCurrentSearch] = useState("");
+  const [error, setError] = useState(null);
 
-  const fetchVideos = async (pageToken = "", query = "") => {
-    setLoading(true);
+  const fetchVideos = async (pageToken = "", query = "", isPagination = false) => {
+    // Use different loading states for initial load vs pagination
+    if (isPagination) {
+      setPaginationLoading(true);
+    } else {
+      setLoading(true);
+    }
+
+    setError(null);
+
     try {
       let url = `http://localhost:5000/api/videos?id=${id}&pageToken=${pageToken}`;
       if (query) {
@@ -33,9 +43,11 @@ const VideoList = ({ searchQuery }) => {
       setCurrentSearch(query);
     } catch (err) {
       console.error("Error fetching videos:", err);
+      setError("Failed to load videos. Please try again.");
       setVideos([]);
     } finally {
       setLoading(false);
+      setPaginationLoading(false);
     }
   };
 
@@ -48,15 +60,15 @@ const VideoList = ({ searchQuery }) => {
   }, [id, searchQuery]);
 
   const handleNext = () => {
-    if (nextPageToken) {
-      fetchVideos(nextPageToken, currentSearch);
+    if (nextPageToken && !paginationLoading) {
+      fetchVideos(nextPageToken, currentSearch, true);
       setCurrentPageNumber((prev) => prev + 1);
     }
   };
 
   const handlePrev = () => {
-    if (prevPageToken) {
-      fetchVideos(prevPageToken, currentSearch);
+    if (prevPageToken && !paginationLoading) {
+      fetchVideos(prevPageToken, currentSearch, true);
       setCurrentPageNumber((prev) => Math.max(prev - 1, 1));
     }
   };
@@ -71,6 +83,18 @@ const VideoList = ({ searchQuery }) => {
         <div className="search-info">
           <h3>Search Results for: "{currentSearch}"</h3>
           <p>{totalResults} videos found</p>
+        </div>
+      )}
+
+      {error && (
+        <div className="error-container">
+          <p className="error-message">{error}</p>
+          <button
+            onClick={() => fetchVideos("", currentSearch)}
+            className="retry-btn"
+          >
+            Try Again
+          </button>
         </div>
       )}
 
@@ -95,13 +119,13 @@ const VideoList = ({ searchQuery }) => {
         </div>
       ) : (
         <>
-          <div className="video-list">
+          <div className={`video-list ${paginationLoading ? 'loading' : ''}`}>
             {videos.map((video) => (
               <VideoCard key={video.id.videoId} video={video} />
             ))}
           </div>
 
-          <div className="pagination-container">
+          <div className={`pagination-container ${paginationLoading ? 'loading' : ''}`}>
             <div className="pagination-info">
               <span>
                 Showing {((currentPageNumber - 1) * resultsPerPage) + 1} - {Math.min(currentPageNumber * resultsPerPage, totalResults)} of {totalResults} videos
@@ -111,18 +135,22 @@ const VideoList = ({ searchQuery }) => {
             <div className="pagination">
               <button
                 onClick={handlePrev}
-                disabled={!prevPageToken}
-                className="pagination-btn prev-btn"
+                disabled={!prevPageToken || paginationLoading}
+                className={`pagination-btn prev-btn ${paginationLoading ? 'loading' : ''}`}
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  viewBox="0 0 16 16"
-                >
-                  <path fillRule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-                </svg>
+                {paginationLoading ? (
+                  <div className="btn-spinner"></div>
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    viewBox="0 0 16 16"
+                  >
+                    <path fillRule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                  </svg>
+                )}
                 Previous
               </button>
 
@@ -131,23 +159,30 @@ const VideoList = ({ searchQuery }) => {
                 {getTotalPages() > 0 && (
                   <span className="total-pages">of {getTotalPages()}</span>
                 )}
+                {paginationLoading && (
+                  <span className="loading-indicator">Loading...</span>
+                )}
               </div>
 
               <button
                 onClick={handleNext}
-                disabled={!nextPageToken}
-                className="pagination-btn next-btn"
+                disabled={!nextPageToken || paginationLoading}
+                className={`pagination-btn next-btn ${paginationLoading ? 'loading' : ''}`}
               >
                 Next
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  viewBox="0 0 16 16"
-                >
-                  <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                </svg>
+                {paginationLoading ? (
+                  <div className="btn-spinner"></div>
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    viewBox="0 0 16 16"
+                  >
+                    <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                  </svg>
+                )}
               </button>
             </div>
           </div>
