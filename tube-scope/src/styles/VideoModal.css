@@ -39,7 +39,8 @@
 
 .enhanced-modal-content {
   position: relative;
-  background: linear-gradient(145deg, #ffffff, #f8f9fa);
+  /* background: linear-gradient(145deg, #ffffff, #f8f9fa); */
+  background: linear-gradient(135deg, #667eea, #764ba2);
   border-radius: 16px;
   width: 50vw;
   height: 90vh;
@@ -70,9 +71,10 @@
 
 .modal-title {
   margin: 0;
+  color: aliceblue;
   font-size: 1rem;
   font-weight: 700;
-  color: #2c3e50;
+  /* color: #2c3e50; */
   line-height: 1;
   max-width: calc(100% - 60px);
   display: -webkit-box;
@@ -135,11 +137,13 @@
 
 .video-description {
   margin-bottom: 20px;
+
 }
 
 .video-description p {
   margin: 0;
-  color: #555;
+  /* color: #555; */
+   color: aliceblue;
   line-height: 1.6;
   font-size: 0.95rem;
   max-height: 120px;
@@ -178,7 +182,8 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #666;
+  /* color: #666; */
+   color: aliceblue;
 }
 
 .meta-item svg {
@@ -188,12 +193,13 @@
 
 .channel-name {
   font-weight: 600;
-  color: #667eea;
+  color: #000000;
   font-size: 0.95rem;
 }
 
 .publish-date {
-  color: #888;
+  /* color: #888; */
+   color: aliceblue;
   font-size: 0.9rem;
 }
 

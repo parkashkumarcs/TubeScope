@@ -39,7 +39,7 @@ const VideoList = ({ searchQuery }) => {
       setNextPageToken(res.data.nextPageToken || "");
       setPrevPageToken(res.data.prevPageToken || "");
       setTotalResults(res.data.totalResults || 0);
-      setResultsPerPage(res.data.resultsPerPage || 50);
+      setResultsPerPage(res.data.resultsPerPage || 51);
       setCurrentSearch(query);
     } catch (err) {
       console.error("Error fetching videos:", err);
