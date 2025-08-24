@@ -11,7 +11,7 @@ const VideoList = ({ searchQuery }) => {
   const [prevPageToken, setPrevPageToken] = useState("");
   const [currentPageNumber, setCurrentPageNumber] = useState(1);
   const [totalResults, setTotalResults] = useState(0);
-  const [resultsPerPage, setResultsPerPage] = useState(50);
+  const [resultsPerPage, setResultsPerPage] = useState(51);
   const [loading, setLoading] = useState(false);
   const [paginationLoading, setPaginationLoading] = useState(false);
   const [currentSearch, setCurrentSearch] = useState("");
@@ -157,12 +157,12 @@ const VideoList = ({ searchQuery }) => {
               <div className="page-info">
                 <span className="page-number">Page {currentPageNumber}</span>
                 {getTotalPages() > 0 && (
-                  <span className="total-pages">of {getTotalPages()}</span>
-                )}
-                {paginationLoading && (
-                  <span className="loading-indicator">Loading...</span>
+                  <span className="page-number">of {getTotalPages()}</span>
                 )}
               </div>
+              {paginationLoading && (
+                  <p className="loading-indicator">Loading...</p>
+                )}
 
               <button
                 onClick={handleNext}

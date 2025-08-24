@@ -161,7 +161,7 @@
 
 .page-info {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   gap: 4px;
   padding: 0 20px;
@@ -226,6 +226,8 @@
   font-weight: 500;
   margin-left: 8px;
   animation: pulse 1.5s ease-in-out infinite;
+  position: absolute;
+  bottom: 0;
 }
 
 @keyframes spin {
