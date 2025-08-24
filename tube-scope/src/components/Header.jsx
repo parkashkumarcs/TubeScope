@@ -114,8 +114,18 @@ const Header = ({ onSearch }) => {
       {/* Search and Navigation Section */}
       <div className="search-navigation-section">
           <div className="search-container">
+            <a href="/" className="home-btn">
+              Home
+            </a>
             <form onSubmit={handleSearch} className="search-form">
               <div className="search-input-wrapper">
+                <input
+                  type="text"
+                  placeholder="Search videos..."
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                  className="search-input"
+                />
                 <svg
                   className="search-icon"
                   xmlns="http://www.w3.org/2000/svg"
@@ -126,13 +136,6 @@ const Header = ({ onSearch }) => {
                 >
                   <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                 </svg>
-                <input
-                  type="text"
-                  placeholder="Search videos..."
-                  value={searchQuery}
-                  onChange={handleSearchChange}
-                  className="search-input"
-                />
                 {searchQuery && (
                   <button
                     type="button"
@@ -155,41 +158,41 @@ const Header = ({ onSearch }) => {
                 Search
               </button>
             </form>
-          </div>
 
-          {/* Videos and Shorts Navigation Buttons */}
-          <div className="content-navigation">
-            <button
-              className={`nav-btn ${activeTab === 'videos' ? 'active' : ''}`}
-              onClick={() => setActiveTab('videos')}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="18"
-                height="18"
-                fill="currentColor"
-                viewBox="0 0 16 16"
+            {/* Videos and Shorts Navigation Buttons */}
+            <div className="content-navigation">
+              <button
+                className={`nav-btn ${activeTab === 'videos' ? 'active' : ''}`}
+                onClick={() => setActiveTab('videos')}
               >
-                <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zM6.79 5.093 11 8 6.79 10.907V5.093z"/>
-              </svg>
-              Videos
-            </button>
-            <button
-              className={`nav-btn ${activeTab === 'shorts' ? 'active' : ''}`}
-              onClick={() => setActiveTab('shorts')}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="18"
-                height="18"
-                fill="currentColor"
-                viewBox="0 0 16 16"
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  fill="currentColor"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zM6.79 5.093 11 8 6.79 10.907V5.093z"/>
+                </svg>
+                Videos
+              </button>
+              <button
+                className={`nav-btn ${activeTab === 'shorts' ? 'active' : ''}`}
+                onClick={() => setActiveTab('shorts')}
               >
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                <path d="M6.271 5.055a.5.5 0 0 1 .52.038L11 7.055a.5.5 0 0 1 0 .89L6.791 9.907a.5.5 0 0 1-.791-.389V5.482a.5.5 0 0 1 .271-.427z"/>
-              </svg>
-              Shorts
-            </button>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  fill="currentColor"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path d="M6.271 5.055a.5.5 0 0 1 .52.038L11 7.055a.5.5 0 0 1 0 .89L6.791 9.907a.5.5 0 0 1-.791-.389V5.482a.5.5 0 0 1 .271-.427z"/>
+                </svg>
+                Shorts
+              </button>
+            </div>
           </div>
         </div>
     </>

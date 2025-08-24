@@ -8,7 +8,7 @@
   transition: background 0.5s ease-in-out;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  height: 300px;
+  height: 180px;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   display: block;
@@ -48,8 +48,8 @@
 .channel-profile-section {
   display: flex;
   align-items: center;
-  gap: 40px;
-  padding: 60px 80px;
+  gap: 24px;
+  padding: 32px 40px;
   background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
   border-bottom: none;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
@@ -63,7 +63,7 @@
 /* Search and Navigation Section */
 .search-navigation-section {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 20px 80px;
+  padding: 16px 40px;
   border-bottom: none;
   box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
   width: 100vw;
@@ -73,15 +73,18 @@
   z-index: 1000;
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .channel-logo {
-  width: 140px;
-  height: 140px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
-  box-shadow: 0 12px 40px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
   transition: all 0.4s ease;
-  border: 6px solid #ffffff;
+  border: 3px solid #ffffff;
   flex-shrink: 0;
   position: relative;
 }
@@ -115,25 +118,25 @@
 }
 
 .channel-info h1 {
-  font-size: 3.8rem;
-  margin: 0 0 16px 0;
-  font-weight: 800;
+  font-size: 2.2rem;
+  margin: 0 0 8px 0;
+  font-weight: 700;
   background: linear-gradient(135deg, #667eea, #764ba2);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
 }
 
 .channel-handle {
-  font-size: 1.3rem;
+  font-size: 0.95rem;
   color: #7c7c7c;
-  margin: 0 0 24px 0;
+  margin: 0 0 16px 0;
   font-weight: 500;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
 }
 
 .channel-handle::before {
@@ -149,9 +152,9 @@
 .stats {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 20px;
   font-size: 1rem;
-  margin: 0 0 30px 0;
+  margin: 0 0 20px 0;
   flex-wrap: wrap;
 }
 
@@ -159,14 +162,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   background: linear-gradient(135deg, #667eea, #764ba2);
   color: white;
-  padding: 20px 24px;
-  border-radius: 18px;
+  padding: 12px 16px;
+  border-radius: 12px;
   box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
   transition: all 0.3s ease;
-  min-width: 140px;
+  min-width: 100px;
 }
 
 .stat-item:hover {
@@ -175,15 +178,15 @@
 }
 
 .stat-number {
-  font-weight: 800;
-  font-size: 1.6rem;
+  font-weight: 700;
+  font-size: 1.1rem;
   color: white;
   line-height: 1;
 }
 
 .stat-label {
   font-weight: 500;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   color: rgba(255, 255, 255, 0.9);
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -194,15 +197,15 @@
 }
 
 .channel-desc {
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   color: #555;
-  line-height: 1.7;
-  max-width: 800px;
+  line-height: 1.5;
+  max-width: 600px;
   margin: 0;
   background: rgba(102, 126, 234, 0.05);
-  padding: 24px 28px;
-  border-radius: 14px;
-  border-left: 4px solid #667eea;
+  padding: 16px 20px;
+  border-radius: 10px;
+  border-left: 3px solid #667eea;
   position: relative;
   font-weight: 400;
 }
@@ -210,9 +213,9 @@
 .channel-desc::before {
   content: '"';
   position: absolute;
-  top: 8px;
-  left: 8px;
-  font-size: 2rem;
+  top: 6px;
+  left: 6px;
+  font-size: 1.5rem;
   color: #667eea;
   opacity: 0.3;
   font-family: serif;
@@ -220,26 +223,26 @@
 
 /* Content Navigation Buttons */
 .content-navigation {
-  display: flex;
-  gap: 16px;
-  margin-top: 20px;
-  justify-content: center;
+  display: contents;
 }
 
 .nav-btn {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 14px 28px;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
   background: #ffffff;
   border: 2px solid #e0e0e0;
-  border-radius: 30px;
+  border-radius: 22px;
   color: #333;
-  font-size: 1rem;
+  font-size: 0.75rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100px;
+  height: 30px;
 }
 
 .nav-btn:hover {
@@ -262,40 +265,63 @@
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(238, 90, 36, 0.4);
 }
+.home-btn {
+  background: #ffffff;
+  border: 2px solid #e0e0e0;
+  color: #333;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  width: 100px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 22px;
+  text-decoration: none;
+  order: -1;
+}
+
+.home-btn:hover {
+  background: #f8f9fa;
+  border-color: #667eea;
+  color: #667eea;
+  transform: translateY(-2px);
+}
 
 /* Search Container Styles */
 .search-container {
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: nowrap;
 }
 
 .search-form {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
+  display: contents;
 }
 
 .search-input-wrapper {
   position: relative;
-  flex: 1;
-  min-width: 350px;
-  max-width: 550px;
+  width: 200px;
+  transition: width 0.3s ease;
 }
 
 .search-input {
   width: 100%;
-  padding: 16px 55px 16px 50px;
+  padding: 5px 30px 5px 40px;
   border: 2px solid #ffffff;
-  border-radius: 30px;
+  border-radius: 22px;
   background: #ffffff;
   color: #333;
-  font-size: 1.1rem;
+  font-size: 0.75rem;
   outline: none;
   transition: all 0.3s ease;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 .search-input::placeholder {
@@ -306,29 +332,41 @@
   border-color: #667eea;
   background: #ffffff;
   box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+  text-align: left;
+}
+
+.search-input-wrapper:focus-within {
+  width: 400px;
 }
 
 .search-icon {
   position: absolute;
-  left: 18px;
+  left: 15%;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translate(-50%, -50%);
   color: #888;
   pointer-events: none;
-  width: 22px;
-  height: 22px;
+  width: 18px;
+  height: 18px;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus + .search-icon,
+.search-input:not(:placeholder-shown) + .search-icon {
+  left: 14px;
+  transform: translateY(-50%);
 }
 
 .clear-search-btn {
   position: absolute;
-  right: 18px;
+  right: 14px;
   top: 50%;
   transform: translateY(-50%);
   background: none;
   border: none;
   color: #888;
   cursor: pointer;
-  padding: 6px;
+  padding: 4px;
   border-radius: 50%;
   transition: all 0.2s ease;
   display: flex;
@@ -342,17 +380,21 @@
 }
 
 .search-btn {
-  padding: 16px 32px;
+  padding: 12px 24px;
   background: linear-gradient(135deg, #667eea, #764ba2);
   color: white;
   border: none;
-  border-radius: 30px;
-  font-size: 1.1rem;
+  border-radius: 22px;
+  font-size: 0.75rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-  min-width: 120px;
+  width: 100px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .search-btn:hover {
@@ -368,86 +410,101 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .header-banner {
-    height: 250px;
+    height: 150px;
   }
 
   .channel-profile-section {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 50px 30px 40px;
-    gap: 30px;
+    padding: 24px 20px;
+    gap: 20px;
   }
 
   .channel-logo {
-    width: 120px;
-    height: 120px;
+    width: 70px;
+    height: 70px;
   }
 
   .channel-info h1 {
-    font-size: 2.8rem;
+    font-size: 1.8rem;
   }
 
   .channel-handle {
-    font-size: 1.1rem;
+    font-size: 0.85rem;
   }
 
   .stats {
     justify-content: center;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 12px;
   }
 
   .stat-item {
-    min-width: 120px;
-    padding: 16px 20px;
+    min-width: 80px;
+    padding: 10px 12px;
   }
 
   .stat-number {
-    font-size: 1.4rem;
+    font-size: 1rem;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
   }
 
   .channel-desc {
     max-width: 100%;
-    font-size: 1rem;
-    padding: 20px 24px;
+    font-size: 0.85rem;
+    padding: 12px 16px;
   }
 
   .search-navigation-section {
-    padding: 18px 30px;
+    padding: 12px 20px;
   }
 
   .search-container {
-    max-width: 100%;
+    gap: 6px;
+    flex-wrap: wrap;
   }
 
-  .search-form {
-    flex-direction: column;
-    gap: 16px;
+  .home-btn {
+    width: 60px;
+    height: 28px;
+    font-size: 0.7rem;
   }
 
   .search-input-wrapper {
-    min-width: 100%;
-    max-width: 100%;
+    width: 100px;
+  }
+
+  .search-input-wrapper:focus-within {
+    width: 150px;
+  }
+
+  .search-input {
+    padding: 8px 25px;
+    font-size: 0.8rem;
   }
 
   .search-btn {
-    width: 100%;
-    max-width: 250px;
-    margin: 0 auto;
-  }
-
-  .content-navigation {
-    flex-direction: row;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 20px;
+    width: 60px;
+    height: 28px;
+    padding: 6px 10px;
+    font-size: 0.7rem;
   }
 
   .nav-btn {
-    flex: 1;
-    max-width: 150px;
-    justify-content: center;
+    width: 60px;
+    height: 28px;
+    padding: 6px 6px;
+    font-size: 0.7rem;
+    gap: 3px;
+  }
+
+  .nav-btn svg {
+    width: 12px;
+    height: 12px;
   }
 }
 
