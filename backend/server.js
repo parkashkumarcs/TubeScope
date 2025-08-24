@@ -59,7 +59,7 @@ app.get("/api/videos", async (req, res) => {
 
     // Now get videos from uploads playlist (much cheaper - 1 unit vs 100 units)
     const playlistResponse = await fetch(
-      `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsPlaylistId}&maxResults=50&pageToken=${pageToken}&key=${API_KEY}`
+      `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsPlaylistId}&maxResults=30&pageToken=${pageToken}&key=${API_KEY}`
     );
 
     if (!playlistResponse.ok) {
@@ -87,7 +87,7 @@ app.get("/api/videos", async (req, res) => {
       nextPageToken: playlistData.nextPageToken || "",
       prevPageToken: playlistData.prevPageToken || "",
       totalResults: playlistData.pageInfo?.totalResults || 0,
-      resultsPerPage: playlistData.pageInfo?.resultsPerPage || 50,
+      resultsPerPage: playlistData.pageInfo?.resultsPerPage || 30,
     });
   } catch (error) {
     console.error("❌ Error fetching videos:", error.message);

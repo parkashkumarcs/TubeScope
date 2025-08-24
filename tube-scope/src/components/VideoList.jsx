@@ -11,7 +11,7 @@ const VideoList = ({ searchQuery }) => {
   const [prevPageToken, setPrevPageToken] = useState("");
   const [currentPageNumber, setCurrentPageNumber] = useState(1);
   const [totalResults, setTotalResults] = useState(0);
-  const [resultsPerPage, setResultsPerPage] = useState(51);
+  const [resultsPerPage, setResultsPerPage] = useState(30);
   const [loading, setLoading] = useState(false);
   const [paginationLoading, setPaginationLoading] = useState(false);
   const [currentSearch, setCurrentSearch] = useState("");
@@ -39,7 +39,7 @@ const VideoList = ({ searchQuery }) => {
       setNextPageToken(res.data.nextPageToken || "");
       setPrevPageToken(res.data.prevPageToken || "");
       setTotalResults(res.data.totalResults || 0);
-      setResultsPerPage(res.data.resultsPerPage || 51);
+      setResultsPerPage(res.data.resultsPerPage || 30);
       setCurrentSearch(query);
     } catch (err) {
       console.error("Error fetching videos:", err);
