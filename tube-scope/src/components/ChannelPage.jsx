@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Header from "./Header";
 import VideoList from "./VideoList";
 import Footer from "./Footer";
+import Chatbot from "./Chatbot";
 
 
 const ChannelPage = () => {
@@ -18,6 +19,7 @@ const ChannelPage = () => {
         <VideoList searchQuery={searchQuery} />
       </main>
       <Footer />
+      <Chatbot />
     </div>
   );
 };
