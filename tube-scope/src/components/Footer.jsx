@@ -107,7 +107,7 @@ const Footer = () => {
       <div className="footer-bottom">
         <div className="footer-bottom-content">
           <div className="copyright">
-            <p>© {new Date().getFullYear()} TubeScope. Made with <FaHeart className="heart" /> by Parkash</p>
+            <p>© {new Date().getFullYear()} TubeScope. Made with by Parkash Kumar</p>
           </div>
           <div className="footer-bottom-links">
             <a href="/privacy">Privacy</a>

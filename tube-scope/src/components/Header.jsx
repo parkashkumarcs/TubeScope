@@ -47,6 +47,8 @@ const Header = ({ onSearch }) => {
     }
   };
 
+
+
   useEffect(() => {
     const fetchChannelData = async () => {
       try {
@@ -59,6 +61,8 @@ const Header = ({ onSearch }) => {
     };
     fetchChannelData();
   }, [id]);
+
+
 
   if (!channel) {
     return (
