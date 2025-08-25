@@ -28,6 +28,7 @@ const Header = ({ onSearch }) => {
   const [channel, setChannel] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeTab, setActiveTab] = useState("videos");
+  const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -45,6 +46,10 @@ const Header = ({ onSearch }) => {
     if (onSearch) {
       onSearch("");
     }
+  };
+
+  const toggleDescription = () => {
+    setIsDescriptionExpanded(!isDescriptionExpanded);
   };
 
 
@@ -85,35 +90,53 @@ const Header = ({ onSearch }) => {
         <div className="overlay"></div>
       </header>
 
-      {/* Channel Info Section - Now outside the banner */}
+      {/* Channel Info Section - Compact Layout */}
       <div className="channel-profile-section">
+        <div className="channel-main-row">
           <img
             src={channel.thumbnail}
             alt={channel.title}
             className="channel-logo"
           />
-          <div className="channel-info">
+          <div className="channel-identity">
             <h1>{channel.title}</h1>
             <p className="channel-handle">@{channel.customUrl || channel.title.replace(/\s+/g, '').toLowerCase()}</p>
-            <div className="stats">
-              <span className="stat-item">
-                <span className="stat-number">{formatNumber(channel.subscriberCount)}</span>
-                <span className="stat-label">subscribers</span>
-              </span>
-              <span className="stat-separator">•</span>
-              <span className="stat-item">
-                <span className="stat-number">{formatNumber(channel.videoCount)}</span>
-                <span className="stat-label">videos</span>
-              </span>
-              <span className="stat-separator">•</span>
-              <span className="stat-item">
-                <span className="stat-number">{formatNumber(channel.viewCount)}</span>
-                <span className="stat-label">views</span>
-              </span>
+          </div>
+          <div className="channel-stats">
+            <div className="stat-item">
+              <span className="stat-number">{formatNumber(channel.subscriberCount)}</span>
+              <span className="stat-label">subscribers</span>
             </div>
-            <p className="channel-desc">{channel.description}</p>
+            <div className="stat-item">
+              <span className="stat-number">{formatNumber(channel.videoCount)}</span>
+              <span className="stat-label">videos</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-number">{formatNumber(channel.viewCount)}</span>
+              <span className="stat-label">views</span>
+            </div>
           </div>
         </div>
+        {channel.description && (
+          <div className="channel-description">
+            <p className="channel-desc">
+              {isDescriptionExpanded
+                ? channel.description
+                : channel.description.length > 150
+                  ? `${channel.description.substring(0, 150)}...`
+                  : channel.description}
+              {channel.description.length > 150 && (
+                <button
+                  className="read-more-btn"
+                  onClick={toggleDescription}
+                >
+                  {isDescriptionExpanded ? ' Show less' : ' Read more'}
+                </button>
+              )}
+            </p>
+          </div>
+        )}
+      </div>
 
       {/* Search and Navigation Section */}
       <div className="search-navigation-section">
