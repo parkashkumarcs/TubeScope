@@ -106,19 +106,25 @@
   border-radius: 50%;
 }
 
-.chatbot-avatar svg {
-  width: 32px;
-  height: 32px;
-  color: white;
+.chatbot-logo {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  left: 12px;
+
 }
 
-.chatbot-container.minimized:hover .chatbot-avatar svg {
-  width: 30px;
-  height: 30px;
-  /* color: #667eea; */
+.chatbot-container.minimized:hover .chatbot-logo {
+  width: 40px;
+  height: 40px;
   filter: none;
+  position: relative;
+  left: 0;
 }
 
 .chatbot-info {

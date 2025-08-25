@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import '../styles/Chatbot.css';
+import chatbotLogo from '../assets/chatbot-logo.png';
 
 const Chatbot = () => {
   const [isMinimized, setIsMinimized] = useState(true);
@@ -80,21 +81,11 @@ const Chatbot = () => {
       {/* Chatbot Header */}
       <div className="chatbot-header" onClick={toggleMinimize}>
         <div className="chatbot-avatar">
-          <svg viewBox="0 0 100 100" fill="currentColor">
-            <defs>
-              <linearGradient id="botGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#667eea"/>
-                <stop offset="100%" stopColor="#764ba2"/>
-              </linearGradient>
-            </defs>
-            {/* Robot Head - Centered and Simplified */}
-            <rect x="25" y="35" width="50" height="40" rx="8" ry="8" fill="url(#botGradient)"/>
-            {/* Robot Eyes */}
-            <circle cx="38" cy="50" r="4" fill="white"/>
-            <circle cx="62" cy="50" r="4" fill="white"/>
-            {/* Robot Mouth */}
-            <path d="M 35 62 Q 50 68 65 62" stroke="white" strokeWidth="2" fill="none" strokeLinecap="round"/>
-          </svg>
+          <img
+            src={chatbotLogo}
+            alt="Chatbot"
+            className="chatbot-logo"
+          />
         </div>
         <div className="chatbot-info">
           <h4>YouTube Assistant</h4>
