@@ -13,7 +13,7 @@ const ChannelInput = () => {
     { id: "UCq-Fj5jknLsUf-MWSy4_brA", name: "T-Series", category: "Music" },
     { id: "UC-lHJZR3Gqxm24_Vd_AJ5Yw", name: "PewDiePie", category: "Gaming" },
     { id: "UCYzPXprvl5Y-Sf0g4vX-m6g", name: "jacksepticeye", category: "Gaming" },
-    { id: "UCuAXFkgsw1L7xaCfnd5JJOw", name: "Markiplier", category: "Gaming" },
+    { id: "UCuAXFkgsw1L7xaCfnd5JJOw", name: "Rick Astley", category: "Music" },
     { id: "UCsooa4yRKGN_zEE8iknghZA", name: "TED", category: "Education" },
     { id: "UCJ0-OtVpF0wOKEqT2Z1HEtA", name: "ElectroBOOM", category: "Education" },
     { id: "UCsXVk37bltHxD1rDPwtNM8Q", name: "Kurzgesagt", category: "Education" },
