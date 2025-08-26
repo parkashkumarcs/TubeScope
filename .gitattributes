@@ -1,0 +1,14 @@
+# Auto-detect text files and normalize line endings
+* text=auto
+
+# Always use LF for these (Linux tools need LF)
+*.sh text eol=lf
+*.json text eol=lf
+*.js text eol=lf
+*.ts text eol=lf
+*.md text eol=lf
+*.env text eol=lf
+vercel.json text eol=lf
+
+# Windows batch files can stay CRLF
+*.bat text eol=crlf
