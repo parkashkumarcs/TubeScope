@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import '../styles/Chatbot.css';
-import chatbotLogo from '../assets/chatbot-logo.png';
+import chatbotLogo from '../assets/logo.png';
 
 const Chatbot = () => {
   const [isMinimized, setIsMinimized] = useState(true);
