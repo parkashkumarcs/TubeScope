@@ -1,20 +1,18 @@
-````markdown
-# TubeScope 🎥
+# TubeScope
 
-TubeScope is a full-stack web application that allows users to fetch and display YouTube channel videos and related content using the **YouTube Data API v3**.  
-The project is built with **React (Vite)** on the frontend and **Node.js + Express** on the backend.
+TubeScope is a modern web application built with React and Vite that allows users to explore and analyze YouTube channel content through an intuitive interface. By simply entering a channel ID, users can view videos, metadata, and other insights presented in a clean, responsive design. The platform integrates with the YouTube Data API to fetch real-time content, while a dedicated backend ensures smooth communication and scalability. Additionally, TubeScope features an AI Assistant Bot that helps users navigate the platform, answer queries, and provide guided support, making the overall experience smarter and more interactive.
 
 🌐 **Live Project:** [TubeScope on Vercel](https://tube-scope.vercel.app/)
 
 ---
 
-## 🚀 Features
-- 🔍 Search YouTube channels by **Channel ID**.  
-- 📺 Display channel videos with **pagination**.  
-- 📊 Fetch detailed channel information using the **YouTube Data API**.  
-- 💻 Responsive design with a modern, clean UI.  
-- ☁️ Frontend hosted on **Vercel**.  
-- ⚡ Backend hosted on **Vercel** as serverless functions.  
+## Features
+- Search YouTube channels by **Channel ID**.  
+- Display channel videos with **pagination**.  
+- Fetch detailed channel information using the **YouTube Data API**.  
+- Responsive design with a modern, clean UI.  
+- Frontend hosted on **Vercel**.  
+- Backend hosted on **Vercel** as serverless functions.  
 
 ---
 
@@ -34,7 +32,7 @@ The project is built with **React (Vite)** on the frontend and **Node.js + Expre
 
 ---
 
-## 📦 Requirements
+## Requirements
 Before running the project locally, ensure you have:
 - **Node.js** v16 or higher  
 - **npm** or **yarn**  
@@ -112,39 +110,39 @@ VITE_BACKEND_URL=https://your-backend.vercel.app
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
-### 🔎 Home - Search Mode
+### Home - Search Mode
 
 <img width="960" height="418" alt="home" src="https://github.com/user-attachments/assets/7f75c15a-54a6-4293-b67c-b4a337781de2" />
 
-### ⭐ Recommended Popular Channels
+### Recommended Popular Channels
 
 <img width="960" height="418" alt="home2" src="https://github.com/user-attachments/assets/29497294-f809-41b9-80a9-4e9bd9b84e00" />
 
-### 📌 Channel Page - Header
+### Channel Page - Header
 
 <img width="960" height="419" alt="channelPage1" src="https://github.com/user-attachments/assets/cc17354f-c7f8-4b9b-a3b8-e1dd3f5e9538" />
 
-### 🎞️ Channel Page - Video List
+### Channel Page - Video List
 
 <img width="960" height="425" alt="channelPage2" src="https://github.com/user-attachments/assets/b84e31c5-d6db-4ced-99a0-46d18c06a31d" />
 
-### 🤖 Chatbot Feature
+### Chatbot Feature
 
 <img width="960" height="423" alt="channelPage3" src="https://github.com/user-attachments/assets/bae1bf1f-8ead-404c-9a6a-3941d5ccffee" />
 
-### 🎬 Video Modal UI
+### Video Modal UI
 
 <img width="960" height="413" alt="videoModal" src="https://github.com/user-attachments/assets/87ec175f-4385-438f-9195-2fd63aa2a49b" />
 
-### 📍 Footer with Quick Links
+### Footer with Quick Links
 
 <img width="960" height="442" alt="footer" src="https://github.com/user-attachments/assets/348dcd02-4806-47e2-b7fb-56b7d6ced628" />
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome!
 To contribute:
