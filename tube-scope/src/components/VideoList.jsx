@@ -28,9 +28,18 @@ const VideoList = ({ searchQuery }) => {
     setError(null);
 
     try {
-      let url = `http://localhost:5000/api/videos?id=${id}&pageToken=${pageToken}`;
-      if (query) {
-        url += `&q=${encodeURIComponent(query)}`;
+      // Handle both string and object search queries
+      let searchParam = "";
+      if (typeof query === 'object' && query.originalQuery) {
+        searchParam = query.originalQuery;
+      } else if (typeof query === 'string') {
+        searchParam = query;
+      }
+
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      let url = `${apiUrl}/api/videos?id=${id}&pageToken=${pageToken}`;
+      if (searchParam) {
+        url += `&q=${encodeURIComponent(searchParam)}`;
       }
 
       const res = await axios.get(url);
@@ -81,7 +90,7 @@ const VideoList = ({ searchQuery }) => {
     <div className="video-list-container">
       {currentSearch && (
         <div className="search-info">
-          <h3>Search Results for: "{currentSearch}"</h3>
+          <h3>Search Results for: "{typeof currentSearch === 'object' ? currentSearch.originalQuery : currentSearch}"</h3>
           <p>{totalResults} videos found</p>
         </div>
       )}
@@ -115,7 +124,7 @@ const VideoList = ({ searchQuery }) => {
             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
           </svg>
           <h3>No videos found</h3>
-          <p>{currentSearch ? `No videos match "${currentSearch}"` : "This channel has no videos yet."}</p>
+          <p>{currentSearch ? `No videos match "${typeof currentSearch === 'object' ? currentSearch.originalQuery : currentSearch}"` : "This channel has no videos yet."}</p>
         </div>
       ) : (
         <>

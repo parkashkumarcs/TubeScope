@@ -30,15 +30,45 @@ const Header = ({ onSearch }) => {
   const [activeTab, setActiveTab] = useState("videos");
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (onSearch && searchQuery.trim()) {
-      onSearch(searchQuery.trim());
+  // YouTube-style search implementation
+  const performYouTubeStyleSearch = (query) => {
+    if (!query.trim()) {
+      if (onSearch) onSearch("");
+      return;
+    }
+
+    // Case-insensitive tokenized search
+    const normalizedQuery = query.toLowerCase().trim();
+    const searchTerms = normalizedQuery.split(/\s+/).filter(term => term.length > 0);
+
+    // Create search parameters object for YouTube-style search
+    const searchParams = {
+      originalQuery: query.trim(),
+      normalizedQuery: normalizedQuery,
+      searchTerms: searchTerms,
+      searchType: "youtube-style"
+    };
+
+    if (onSearch) {
+      onSearch(searchParams);
     }
   };
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+    performYouTubeStyleSearch(searchQuery);
+  };
+
   const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
+    const value = e.target.value;
+    setSearchQuery(value);
+
+    // Real-time search as user types (debounced effect)
+    if (value.trim()) {
+      performYouTubeStyleSearch(value);
+    } else {
+      if (onSearch) onSearch("");
+    }
   };
 
   const clearSearch = () => {
@@ -57,7 +87,8 @@ const Header = ({ onSearch }) => {
   useEffect(() => {
     const fetchChannelData = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/channel?id=${id}`);
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+        const response = await fetch(`${apiUrl}/api/channel?id=${id}`);
         const data = await response.json();
         setChannel(data);
       } catch (error) {
