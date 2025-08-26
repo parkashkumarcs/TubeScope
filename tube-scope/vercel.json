@@ -6,6 +6,6 @@
     }
   ],
   "env": {
-    "VITE_API_URL": "https://tubescope-backend.vercel.app"
+    "VITE_API_URL": "https://your-backend-url.vercel.app"
   }
 }
