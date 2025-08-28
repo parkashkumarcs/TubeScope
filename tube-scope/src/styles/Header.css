@@ -426,46 +426,62 @@
   transform: translateY(0);
 }
 
-/* Responsive Design */
+/* Professional Mobile Two-Row Layout */
 @media (max-width: 768px) {
   .header-banner {
-    height: 150px;
+    height: 120px;
+    margin-left: 0;
+    width: 100%;
   }
 
   .channel-profile-section {
+    padding: 20px 16px;
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .channel-main-row {
     flex-direction: column;
-    align-items: center;
     text-align: center;
-    padding: 24px 20px;
-    gap: 20px;
+    gap: 16px;
+    margin-bottom: 20px;
   }
 
   .channel-logo {
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
   }
 
-  .channel-info h1 {
-    font-size: 1.8rem;
+  .channel-identity {
+    text-align: center;
+  }
+
+  .channel-identity h1 {
+    font-size: 1.5rem;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.2;
   }
 
   .channel-handle {
     font-size: 0.85rem;
+    text-align: center;
   }
 
-  .stats {
+  .channel-stats {
     justify-content: center;
     flex-wrap: wrap;
     gap: 12px;
   }
 
   .stat-item {
-    min-width: 80px;
-    padding: 10px 12px;
+    min-width: 75px;
+    padding: 10px 14px;
   }
 
   .stat-number {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 
   .stat-label {
@@ -473,57 +489,182 @@
   }
 
   .channel-desc {
-    max-width: 100%;
     font-size: 0.85rem;
-    padding: 12px 16px;
+    padding: 14px 18px;
+    text-align: left;
   }
 
+  /* Professional Two-Row Search Navigation */
   .search-navigation-section {
-    padding: 12px 20px;
+    padding: 16px;
+    margin-left: 0;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .search-container {
-    gap: 6px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  /* First Row: Home + Search Field + Search Button */
+  .search-form {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    order: 1;
   }
 
   .home-btn {
-    width: 60px;
-    height: 28px;
-    font-size: 0.7rem;
+    min-width: 60px;
+    height: 36px;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 18px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    flex-shrink: 0;
   }
 
   .search-input-wrapper {
-    width: 100px;
-  }
-
-  .search-input-wrapper:focus-within {
-    width: 150px;
+    flex: 1;
+    position: relative;
   }
 
   .search-input {
-    padding: 8px 25px;
-    font-size: 0.8rem;
+    width: 100%;
+    padding: 10px 40px 10px 40px;
+    font-size: 0.85rem;
+    height: 36px;
+    border-radius: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    outline: none;
+  }
+
+  .search-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .search-input:focus {
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+  }
+
+  .search-icon {
+    left: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    width: 16px;
+    height: 16px;
+  }
+
+  .clear-search-btn {
+    right: 14px;
+    color: rgba(255, 255, 255, 0.8);
   }
 
   .search-btn {
-    width: 60px;
-    height: 28px;
-    padding: 6px 10px;
-    font-size: 0.7rem;
+    min-width: 60px;
+    height: 36px;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 18px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* Second Row: Videos and Shorts Buttons */
+  .content-navigation {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    width: 100%;
+    order: 2;
   }
 
   .nav-btn {
-    width: 60px;
-    height: 28px;
-    padding: 6px 6px;
-    font-size: 0.7rem;
-    gap: 3px;
+    flex: 1;
+    max-width: 120px;
+    height: 36px;
+    padding: 8px 16px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .nav-btn.active {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    border-color: #ee5a24;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(238, 90, 36, 0.3);
+    transform: scale(1.02);
+  }
+
+  .nav-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  }
+
+  .nav-btn.active:hover {
+    background: linear-gradient(135deg, #ee5a24, #ff6b6b);
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 6px 20px rgba(238, 90, 36, 0.4);
+  }
+
+  .home-btn:hover, .search-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
   }
 
   .nav-btn svg {
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
   }
 }
 
@@ -650,29 +791,107 @@ html {
 }
 
 @media (max-width: 480px) {
+  .header-banner {
+    height: 100px;
+  }
+
+  .channel-profile-section {
+    padding: 16px 12px;
+  }
+
   .channel-main-row {
     flex-direction: column;
     text-align: center;
     gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .channel-logo {
+    width: 70px;
+    height: 70px;
+  }
+
+  .channel-identity h1 {
+    font-size: 1.3rem;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .channel-handle {
+    font-size: 0.8rem;
+    text-align: center;
+    white-space: normal;
   }
 
   .channel-stats {
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
+    flex-wrap: wrap;
   }
 
   .stat-item {
-    min-width: 60px;
-    padding: 6px 8px;
+    min-width: 70px;
+    padding: 8px 12px;
   }
 
-  .channel-identity h1 {
-    white-space: normal;
-    text-align: center;
+  .stat-number {
+    font-size: 0.9rem;
   }
 
-  .channel-handle {
-    text-align: center;
-    white-space: normal;
+  .stat-label {
+    font-size: 0.65rem;
+  }
+
+  .channel-desc {
+    font-size: 0.8rem;
+    padding: 12px 16px;
+  }
+
+  /* Compact Two-Row Layout for Small Screens */
+  .search-navigation-section {
+    padding: 12px;
+  }
+
+  .search-container {
+    max-width: 100%;
+    gap: 10px;
+  }
+
+  .home-btn, .search-btn {
+    min-width: 50px;
+    height: 32px;
+    font-size: 0.7rem;
+    border-radius: 16px;
+  }
+
+  .search-input {
+    padding: 8px 35px 8px 35px;
+    height: 32px;
+    font-size: 0.8rem;
+    border-radius: 16px;
+  }
+
+  .search-icon {
+    left: 12px;
+    width: 14px;
+    height: 14px;
+  }
+
+  .clear-search-btn {
+    right: 12px;
+  }
+
+  .nav-btn {
+    height: 32px;
+    padding: 6px 12px;
+    font-size: 0.7rem;
+    border-radius: 16px;
+    max-width: 100px;
+  }
+
+  .nav-btn svg {
+    width: 12px;
+    height: 12px;
   }
 }
