@@ -117,8 +117,7 @@ VITE_BACKEND_URL=https://your-backend.vercel.app
 <img width="960" height="418" alt="home" src="https://github.com/user-attachments/assets/7f75c15a-54a6-4293-b67c-b4a337781de2" />
 
 ### Recommended Popular Channels
-
-<img width="960" height="418" alt="home2" src="https://github.com/user-attachments/assets/29497294-f809-41b9-80a9-4e9bd9b84e00" />
+<img width="953" height="412" alt="home2" src="https://github.com/user-attachments/assets/ca8b3502-26f8-40fb-8283-f11ca8b58c65" />
 
 ### Channel Page - Header
 
